@@ -1,0 +1,30 @@
+<!-- templates/citations.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Citations</title>
+</head>
+<body>
+    <h1>Citations</h1>
+    <ul>
+        {% for citation in citations %}
+            <li>
+                <strong>Citation ID:</strong> {{ citation.id }}<br>
+                <strong>Response:</strong> {{ citation.response }}<br>
+                <ul>
+                    {% for source in citation.source %}
+                        <li>
+                            <strong>Source ID:</strong> {{ source.id }}<br>
+                            <strong>Context:</strong> {{ source.context }}<br>
+                            {% if source.link %}
+                                <strong>Link:</strong> <a href="{{ source.link }}">{{ source.link }}</a><br>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
